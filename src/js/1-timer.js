@@ -12,7 +12,7 @@ const options = {
   minuteIncrement: 1,
   onClose(selectedDates) {
     if (selectedDates[0] <= this.now) {
-      error_handler();
+      showError();
       button.disabled = true;
     } else {
       userSelectedDate = selectedDates[0];
@@ -81,7 +81,7 @@ function addLeadingZero(value) {
   return value.toString().padStart(2, '0');
 }
 
-function error_handler() {
+function showError() {
   iziToast.show({
     title: 'Error:',
     message: 'Please choose a date in the future!',

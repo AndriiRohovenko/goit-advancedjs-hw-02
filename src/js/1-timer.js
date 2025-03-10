@@ -12,14 +12,7 @@ const options = {
   minuteIncrement: 1,
   onClose(selectedDates) {
     if (selectedDates[0] <= this.now) {
-      iziToast.show({
-        title: 'Error:',
-        message: 'Please choose a date in the future!',
-        backgroundColor: 'red',
-        titleColor: 'white',
-        messageColor: 'white',
-        position: 'topRight',
-      });
+      error_handler();
       button.disabled = true;
     } else {
       userSelectedDate = selectedDates[0];
@@ -35,12 +28,20 @@ const button = document.querySelector('button');
 flatpickr(date_input, options);
 
 function start_button_handler() {
+  button.disabled = true;
+  date_input.disabled = true;
   const intervalID = setInterval(() => {
     const currentTime = new Date().getTime();
     const remainingMs = userSelectedDate.getTime() - currentTime;
     const timer_data = convertMs(remainingMs);
     if (remainingMs < 1000) {
       clearInterval(intervalID);
+      button.disabled = false;
+      date_input.value = '';
+      if (!date_input.value) {
+        button.disabled = true;
+      }
+      date_input.disabled = false;
     }
     document.querySelector('[data-days]').textContent = addLeadingZero(
       timer_data.days
@@ -78,4 +79,15 @@ function convertMs(ms) {
 
 function addLeadingZero(value) {
   return value.toString().padStart(2, '0');
+}
+
+function error_handler() {
+  iziToast.show({
+    title: 'Error:',
+    message: 'Please choose a date in the future!',
+    backgroundColor: 'red',
+    titleColor: 'white',
+    messageColor: 'white',
+    position: 'topRight',
+  });
 }

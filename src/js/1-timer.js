@@ -39,7 +39,7 @@ function start_button_handler() {
     const currentTime = new Date().getTime();
     const remainingMs = userSelectedDate.getTime() - currentTime;
     const timer_data = convertMs(remainingMs);
-    if (remainingMs <= 1000) {
+    if (remainingMs < 1000) {
       clearInterval(intervalID);
     }
     document.querySelector('[data-days]').textContent = addLeadingZero(

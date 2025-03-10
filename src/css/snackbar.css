@@ -1,0 +1,44 @@
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  background: #ffffff;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  width: 350px;
+  text-align: center;
+}
+
+input[type='number'] {
+  width: 100%;
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  margin-top: 5px;
+}
+
+fieldset {
+  border: 2px solid #ccc;
+  padding: 15px;
+  border-radius: 8px;
+  margin-top: 15px;
+}
+
+legend {
+  font-weight: bold;
+  font-size: 1.1rem;
+}
+
+label {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 1rem;
+  margin-top: 8px;
+}
+
+input[type='radio'] {
+  transform: scale(1.2);
+}
